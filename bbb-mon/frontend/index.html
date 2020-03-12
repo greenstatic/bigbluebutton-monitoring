@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>BigBlueButton Monitoring</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body class="d-flex flex-column h-100">
+    <!-- Begin page content -->
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <h1 class="mt-5">BigBlueButton Monitoring</h1>
+            <noscript>Sorry, Javascript is needed for this page to work. Yeah it sucks.</noscript>
+
+            <p class="lead">Quick overview of all current meetings on BigBlueButton</p>
+
+            <p>BigBlueButton Server: <span id="text-server"></span></p>
+            <p>Automatically refreshes every 5 seconds.</p>
+
+            <table id="meetings" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">No. users</th>
+                        <th scope="col">Moderators</th>
+                        <th scope="col">Creation</th>
+                    </tr>
+                </thead>
+                    <tbody id="meetings-body">
+
+                    </tbody>
+            </table>
+
+            <div class="loading-spinner spinner-border" role="status">
+                <span class="loading-spinner sr-only">Loading...</span>
+            </div>
+
+        </div>
+
+        <button class="btn btn-primary btn-lg fixed-bottom" type="button" data-toggle="modal" data-target="#healModal" style="margin: 30px;">Heal COVID-19</button>
+
+        <div id="healModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Heal COVID-19</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    404 - Cure not found
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted">Copyright &copy; <script>document.write(new Date().getFullYear())</script></span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="/frontend/main.js"></script>
+</body>
+</html>
