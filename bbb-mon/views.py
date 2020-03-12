@@ -17,7 +17,10 @@ def get_meetings():
 
     meetings = []
     try:
-        meetings = data['response']['meetings']['meeting']
+        if type(data['response']['meetings']['meeting']) == list:
+            meetings = data['response']['meetings']['meeting']
+        else:
+            meetings.append(data['response']['meetings']['meeting'])
     except KeyError:
         logging.warning("Failed to parse meetings")
     except TypeError:
@@ -46,7 +49,6 @@ def get_meetings():
             "name": meeting['meetingName'],
             "id": meeting['meetingID'],
             "creation": meeting['createDate'],
-            "recording": meeting['recording'],
             "noUsers": meeting['listenerCount'],
             "moderators": moderators
         })
