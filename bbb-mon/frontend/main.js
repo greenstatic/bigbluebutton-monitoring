@@ -10,7 +10,7 @@ function spinner(enable) {
 function api_meetings() {
     spinner(true);
 
-    $.get("/api/meetings", function(data) {
+    $.get("./api/meetings", function(data) {
         console.log("API request: /api/meetings");
         $("#meetings-body").empty();
 
@@ -35,7 +35,7 @@ function api_meetings() {
 
 function api_server() {
         console.log("API request: /api/server");
-        $.get("/api/server", function(data) {
+        $.get("./api/server", function(data) {
             $("#text-server").html(data.server);
         });
 }
