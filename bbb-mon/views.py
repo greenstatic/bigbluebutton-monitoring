@@ -26,6 +26,9 @@ def get_meetings():
     response = []
 
     for meeting in meetings:
+        if type(meeting) != OrderedDict:
+            continue
+
         moderators = []
 
         if type(meeting['attendees']) == OrderedDict:

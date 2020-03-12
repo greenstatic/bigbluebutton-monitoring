@@ -27,9 +27,9 @@ function api_meetings() {
 <td>${creation.toLocaleString()}</td>
 </tr>`;
             $("#meetings-body").append(markup);
-            spinner(false);
         });
 
+        spinner(false);
     });
 }
 
