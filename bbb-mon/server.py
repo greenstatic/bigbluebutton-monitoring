@@ -12,7 +12,7 @@ def about():
     return jsonify({"name": "bigbluebutton-monitoring",
                     "version": settings.VERSION,
                     "datetime": datetime.now().isoformat(),
-                    "source": "https://gitlab.fri.uni-lj.si/greenstatic/bigbluebutton-monitoring"})
+                    "source": "https://github.com/greenstatic/bigbluebutton-monitoring"})
 
 
 @app.route('/')
