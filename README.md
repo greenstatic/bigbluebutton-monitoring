@@ -9,11 +9,6 @@ HTTP server will listen on port: 5000
 
 Docker Hub: [https://hub.docker.com/r/greenstatic/bigbluebutton-monitoring](https://hub.docker.com/r/greenstatic/bigbluebutton-monitoring)
 
-```bash
-# Do not forget to install requirements.txt!
-python3 bbb-mon/server.py
-```
-
 ## Installation
 We assume you have docker installed and configured, as well as nginx.
 
@@ -54,3 +49,12 @@ Example nginx config with HTTP basic auth:
            include    fastcgi_params;
         }
 ```
+
+
+## Development
+```bash
+# Do not forget to install requirements.txt and have the required ENV variables set!
+python3 bbb-mon/server.py
+```
+
+On master push, a build job will automatically build a Docker image on Docker Hub (link to Docker Hub repoistory is above).
