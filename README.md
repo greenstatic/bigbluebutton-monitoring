@@ -1,11 +1,13 @@
 # BigBlueButton Monitoring Web App
-Super simple monitoring web app for BigBlueButton
+Super simple monitoring web app for BigBlueButton that will display a list of all current meetings on your BigBlueButton server.
 
 Required ENV variables:
 * API_BASE_URL
 * API_SECRET
 
 HTTP server will listen on port: 5000
+
+Docker Hub: [https://hub.docker.com/r/greenstatic/bigbluebutton-monitoring](https://hub.docker.com/r/greenstatic/bigbluebutton-monitoring)
 
 ```bash
 # Do not forget to install requirements.txt!
@@ -17,11 +19,11 @@ We assume you have docker installed and configured, as well as nginx.
 
 ```bash
 docker login -u <deploy token username> -p <deploy token password> hub.garaza.io
-docker pull hub.garaza.io/greenstatic/bigbluebutton-monitoring
+docker pull greenstatic/bigbluebutton-monitoring
 
-# Example of API BASE URL: https://bbb.garaza.io/bigbluebutton/api/
+# Example of API BASE URL: https://bbb.example.com/bigbluebutton/api/
 # API SECRET KEY can be found by SSH into BBB and running: `$ bbb-conf --secret`
-docker run --name bbb-monitoring -d -p 127.0.0.1:4000:5000 --env API_SECRET=<API SECRET KEY> --env API_BASE_URL=<API BASE URL> hub.garaza.io/greenstatic/bigbluebutton-monitoring:latest
+docker run --name bbb-monitoring -d -p 127.0.0.1:4000:5000 --env API_SECRET=<API SECRET KEY> --env API_BASE_URL=<API BASE URL> greenstatic/bigbluebutton-monitoring
 
 
 # If you wish to configure HTTP Basic Auth
