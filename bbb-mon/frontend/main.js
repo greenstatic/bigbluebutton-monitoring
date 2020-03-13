@@ -19,16 +19,23 @@ function api_meetings() {
 
             let creation = new Date(Date.parse(element.creation));
 
+            let originContext = "";
+            if (element.metadata['origin-context']) {
+                originContext = element.metadata['origin-context'];
+            }
+
             let markup = `<tr>
 <td>${i + 1}</td>
 <td>${element.name}</td>
 <td>${element.noUsers}</td>
 <td>${mods}</td>
+<td>${element.metadata['origin-server']}</td>
+<td>${originContext}</td>
 <td>${creation.toLocaleString()}</td>
 </tr>`;
             $("#meetings-body").append(markup);
         });
-
+        $("#text-last-refresh").html(new Date().toLocaleString());
         spinner(false);
     });
 }

@@ -18,7 +18,6 @@ python3 bbb-mon/server.py
 We assume you have docker installed and configured, as well as nginx.
 
 ```bash
-docker login -u <deploy token username> -p <deploy token password> hub.garaza.io
 docker pull greenstatic/bigbluebutton-monitoring
 
 # Example of API BASE URL: https://bbb.example.com/bigbluebutton/api/

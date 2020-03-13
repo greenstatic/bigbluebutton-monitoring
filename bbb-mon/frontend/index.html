@@ -16,7 +16,7 @@
             <p class="lead">Quick overview of all current meetings on BigBlueButton</p>
 
             <p>BigBlueButton Server: <span id="text-server"></span></p>
-            <p>Automatically refreshes every 15 seconds.</p>
+            <p>Last refresh: <span id="text-last-refresh"></span></p>
 
             <table id="meetings" class="table table-striped">
                 <thead>
@@ -25,6 +25,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">No. users</th>
                         <th scope="col">Moderators</th>
+                        <th scope="col">Origin Server</th>
+                        <th scope="col">Origin Context</th>
                         <th scope="col">Creation</th>
                     </tr>
                 </thead>
@@ -32,6 +34,8 @@
 
                     </tbody>
             </table>
+
+            <p><small>Automatically refreshes every 15 seconds.</small></p>
 
             <div class="loading-spinner spinner-border" role="status">
                 <span class="loading-spinner sr-only">Loading...</span>
@@ -42,7 +46,10 @@
 
     <footer class="footer mt-auto py-3">
         <div class="container">
-            <span class="text-muted">Copyright &copy; <script>document.write(new Date().getFullYear())</script></span>
+            <span class="text-muted">
+                Copyright &copy; <script>document.write(new Date().getFullYear())</script>
+                <a href="https://github.com/greenstatic/bigbluebutton-monitoring">https://github.com/greenstatic/bigbluebutton-monitoring</a>
+            </span>
         </div>
     </footer>
 

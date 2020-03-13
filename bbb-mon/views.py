@@ -2,6 +2,8 @@ import logging
 from collections import OrderedDict
 from urllib.parse import urlparse
 
+import xmltodict
+
 import api_lib
 import settings
 
@@ -45,15 +47,45 @@ def get_meetings():
                 if attendee['role'].lower() == 'moderator':
                     moderators.append(attendee['fullName'])
 
-        response.append({
+        m = {
             "name": meeting['meetingName'],
             "id": meeting['meetingID'],
             "creation": meeting['createDate'],
             "noUsers": meeting['listenerCount'],
-            "moderators": moderators
-        })
+            "moderators": moderators,
+            "metadata": {
+                "origin-server": meeting['metadata']['bbb-origin-server-name'],
+            }
+        }
+
+        # bbb-context is optional in bbb response
+        try:
+            m['metadata']['origin-context'] = _bbb_context_convert_moodle(meeting['metadata']['bbb-context'])
+        except KeyError:
+            pass
+
+        response.append(m)
 
     return response
+
+
+def _bbb_context_convert_moodle(context_html):
+    """
+        Returns the first inner node string from the context html string (useful for the context string returned
+        by the BigBlueButton Moodle plugin.
+    """
+
+    context_html = "<root>{}</root>".format(context_html)  # removes the bug where there is no root node in context_html
+    return_str = ""
+
+    root = xmltodict.parse(context_html)
+    for element in root['root']:
+        el = root['root'][element]
+        if type(el) == list and len(el) > 0:
+            return_str = el[0]['#text']
+            break
+
+    return return_str
 
 
 def get_server():
