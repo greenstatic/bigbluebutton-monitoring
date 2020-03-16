@@ -9,6 +9,9 @@ HTTP server will listen on port: 5000
 
 Docker Hub: [https://hub.docker.com/r/greenstatic/bigbluebutton-monitoring](https://hub.docker.com/r/greenstatic/bigbluebutton-monitoring)
 
+## Demo Screenshot
+![demo-screenshot](demo.png)
+
 ## Installation
 We assume you have docker installed and configured, as well as nginx.
 
