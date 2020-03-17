@@ -1,5 +1,6 @@
 import logging
 from collections import OrderedDict
+from datetime import datetime
 from urllib.parse import urlparse
 
 import xmltodict
@@ -91,4 +92,10 @@ def _bbb_context_convert_moodle(context_html):
 def get_server():
     url_parsed = urlparse(settings.API_BASE_URL)
 
-    return {"server": url_parsed.netloc, "api": settings.API_BASE_URL}
+    return {
+        "service": "bigbluebutton-monitoring",
+        "server": url_parsed.netloc,
+        "api": settings.API_BASE_URL,
+        "version": settings.VERSION,
+        "datetime": datetime.now().isoformat(),
+        "source": "https://github.com/greenstatic/bigbluebutton-monitoring"}

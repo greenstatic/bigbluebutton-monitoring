@@ -44,6 +44,7 @@ function api_server() {
         console.log("API request: /api/server");
         $.get("./api/server", function(data) {
             $("#text-server").html(data.server);
+            $("#text-version").html(data.version);
         });
 }
 

@@ -1,18 +1,7 @@
-from datetime import datetime
-
 from flask import Flask, jsonify, send_from_directory
-import settings
 import views
 
 app = Flask(__name__, static_url_path='')
-
-
-@app.route('/about')
-def about():
-    return jsonify({"name": "bigbluebutton-monitoring",
-                    "version": settings.VERSION,
-                    "datetime": datetime.now().isoformat(),
-                    "source": "https://github.com/greenstatic/bigbluebutton-monitoring"})
 
 
 @app.route('/')
