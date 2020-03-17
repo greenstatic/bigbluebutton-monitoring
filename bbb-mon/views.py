@@ -51,7 +51,7 @@ def get_meetings():
             "name": meeting['meetingName'],
             "id": meeting['meetingID'],
             "creation": meeting['createDate'],
-            "noUsers": meeting['listenerCount'],
+            "noUsers": meeting['participantCount'],
             "moderators": moderators,
             "metadata": {
                 "origin-server": meeting['metadata']['bbb-origin-server-name'],
