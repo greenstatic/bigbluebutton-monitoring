@@ -1,6 +1,11 @@
 # BigBlueButton Monitoring Web App
 Super simple monitoring web app for BigBlueButton that will display a list of all current meetings on your BigBlueButton server.
 
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/greenstatic/bigbluebutton-monitoring?label=latest%20docker%20image&logo=Docker&sort=semver)
+![Docker Pulls](https://img.shields.io/docker/pulls/greenstatic/bigbluebutton-monitoring?logo=Docker)
+![GitHub](https://img.shields.io/github/license/greenstatic/bigbluebutton-monitoring)
+
+
 Required ENV variables:
 * API_BASE_URL
 * API_SECRET
@@ -53,6 +58,11 @@ Example nginx config with HTTP basic auth:
         }
 ```
 
+## Environment Variables
+* API_BASE_URL
+* API_SECRET
+* DEBUG: - Verbose logging, useful when debugging
+    * Values: true/false
 
 ## Development
 ```bash

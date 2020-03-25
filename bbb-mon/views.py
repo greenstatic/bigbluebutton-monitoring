@@ -48,6 +48,12 @@ def get_meetings():
                 if attendee['role'].lower() == 'moderator':
                     moderators.append(attendee['fullName'])
 
+        origin_server = None
+        try:
+            origin_server = meeting['metadata']['bbb-origin-server-name']
+        except KeyError:
+            logging.debug("BBB origin server name does not exist for meeting")
+
         m = {
             "name": meeting['meetingName'],
             "id": meeting['meetingID'],
@@ -55,7 +61,7 @@ def get_meetings():
             "noUsers": meeting['participantCount'],
             "moderators": moderators,
             "metadata": {
-                "origin-server": meeting['metadata']['bbb-origin-server-name'],
+                "origin-server": origin_server,
             }
         }
 
@@ -79,12 +85,16 @@ def _bbb_context_convert_moodle(context_html):
     context_html = "<root>{}</root>".format(context_html)  # removes the bug where there is no root node in context_html
     return_str = ""
 
-    root = xmltodict.parse(context_html)
-    for element in root['root']:
-        el = root['root'][element]
-        if type(el) == list and len(el) > 0:
-            return_str = el[0]['#text']
-            break
+    try:
+        root = xmltodict.parse(context_html)
+        for element in root['root']:
+            el = root['root'][element]
+            if type(el) == list and len(el) > 0:
+                return_str = el[0]['#text']
+                break
+    except Exception as e:
+        logging.error("Failed to parse BBB context string from Moodle")
+        print(e)
 
     return return_str
 

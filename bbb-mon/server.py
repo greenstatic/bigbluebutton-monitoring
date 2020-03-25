@@ -1,4 +1,8 @@
+import logging
+
 from flask import Flask, jsonify, send_from_directory
+
+import settings
 import views
 
 app = Flask(__name__, static_url_path='')

@@ -7,6 +7,8 @@ from urllib.parse import urljoin
 import requests
 import xmltodict as xmltodict
 
+import settings
+
 
 class Client:
     def __init__(self, base_url: str, secret: str):
@@ -32,6 +34,14 @@ def api_get_call(endpoint: str, client: Client) -> Optional[collections.OrderedD
         logging.error("Failed to perform API call")
         logging.error(e)
         return None
+
+    if int(r.status_code / 100) != 2:
+        logging.error("Non 2xx HTTP status code response")
+        logging.error(r.text)
+        return None
+
+    if settings.DEBUG:
+        print(r.text)
 
     return xmltodict.parse(r.text)
 
