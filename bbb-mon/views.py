@@ -53,6 +53,8 @@ def get_meetings():
             origin_server = meeting['metadata']['bbb-origin-server-name']
         except KeyError:
             logging.debug("BBB origin server name does not exist for meeting")
+            logging.debug("Setting BBB origin as the server itself")
+            origin_server = urlparse(settings.API_BASE_URL).netloc
 
         m = {
             "name": meeting['meetingName'],
@@ -87,14 +89,18 @@ def _bbb_context_convert_moodle(context_html):
 
     try:
         root = xmltodict.parse(context_html)
+
+        if type(root['root']) == str:
+            # No XML contents, just plain old string
+            return root['root']
+
         for element in root['root']:
             el = root['root'][element]
             if type(el) == list and len(el) > 0:
                 return_str = el[0]['#text']
                 break
     except Exception as e:
-        logging.error("Failed to parse BBB context string from Moodle")
-        print(e)
+        logging.error("Failed to parse BBB context string from Moodle, error: " + str(e))
 
     return return_str
 

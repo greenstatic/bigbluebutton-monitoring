@@ -3,7 +3,7 @@ import api_lib
 
 MAJOR = 0
 MINOR = 3
-BUGFIX = 1
+BUGFIX = 2
 
 VERSION = "{}.{}.{}".format(MAJOR, MINOR, BUGFIX)
 

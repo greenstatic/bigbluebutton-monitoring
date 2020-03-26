@@ -1,0 +1,17 @@
+version: '3.2'
+services:
+  bbb-exporter:
+    container_name: "bbb-monitoring"
+    image: greenstatic/bigbluebutton-monitoring:${BBB_MONITORING_VERSION:-latest}
+    ports:
+    - "127.0.0.1:4000:5000"
+    environment:
+    - "API_BASE_URL=<TODO: YOUR API URL>"  # example: https://bbb.example.com/bigbluebutton/api/"
+    #- "DEBUG=true"
+    env_file:
+    # Within this file (secrets.env) which needs to be located in the same directory
+    # as docker-compose.yml, you should have the following line
+    # API_SECRET=<TODO: YOUR API SECRET KEY>
+    - secrets.env
+
+    restart: unless-stopped

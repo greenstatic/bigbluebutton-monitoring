@@ -43,7 +43,12 @@ def api_get_call(endpoint: str, client: Client) -> Optional[collections.OrderedD
     if settings.DEBUG:
         print(r.text)
 
-    return xmltodict.parse(r.text)
+    response = xmltodict.parse(r.text)
+    if response['response']['returncode'].lower() != "success":
+        logging.error("Recieved a non-success response: " + response['response']['message'])
+        return None
+
+    return response
 
 
 def getMeetings(client: Client) -> Optional[collections.OrderedDict]:

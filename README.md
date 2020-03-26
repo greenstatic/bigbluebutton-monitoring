@@ -19,10 +19,27 @@ Docker Hub: [https://hub.docker.com/r/greenstatic/bigbluebutton-monitoring](http
 
 ## Installation
 We assume you have docker installed and configured, as well as nginx.
+### Using docker-compose
+Make sure you have docker-compose installed.
 
+1. On your BigBlueButton server
+   ```bash
+   mkdir ~/bbb-monitor
+   ``` 
+2. Create the file `~/bbb-monitor/docker-compose.yml` and copy the contents of `docker-compose.yml` from this repository.
+3. Edit `~/bbb-monitor/docker-compose.yml` and replace the required fields
+4. Create the file `~/bbb-monitor/secrets.env` and place your API_SECRET in it. It should look something like this:
+   ```
+   API_SECRET=<TODO: YOUR API SECRET KEY>
+   ```
+4. cd into `~/bbb-monitor` and run `sudo docker-compose up -d`.
+    * If you wish a specific version of the docker container run instead:
+    ```bash
+    sudo BBB_MONITORING_VERSION=<YOUR DESIRED DOCKER IMAGE VERSION> docker-compose up -d
+    ```  
+   
+### Alternative Installation Without docker-compose
 ```bash
-docker pull greenstatic/bigbluebutton-monitoring
-
 # Example of API BASE URL: https://bbb.example.com/bigbluebutton/api/
 # API SECRET KEY can be found by SSH into BBB and running: `$ bbb-conf --secret`
 docker run --name bbb-monitoring -d -p 127.0.0.1:4000:5000 --env API_SECRET=<API SECRET KEY> --env API_BASE_URL=<API BASE URL> greenstatic/bigbluebutton-monitoring
@@ -34,6 +51,7 @@ sudo htpasswd -c /etc/nginx/.htpasswd admin  # user: admin
 # then enter password
 
 ```
+### Nginx (Common for Both Installation Methods)
 
 Then you can proxy to the `bbb-monitoring` container running on port 4000 (localhost only).
 Example nginx config with HTTP basic auth:
