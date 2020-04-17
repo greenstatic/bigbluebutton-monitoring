@@ -17,10 +17,7 @@ function api_meetings() {
         data.forEach(function(element, i) {
             let mods = element.moderators.join(" | ");
 
-            // Ugly hack to make JS accept CET datetime
-            // Will break with daylight savings and/or different timezones.
-            let creationDateRaw = element.creation.replace("CET", "");
-            let creation = new Date(Date.parse(creationDateRaw));
+            let creation = new Date(parseFloat(element.creation));
 
             let originContext = "";
             if (element.metadata['origin-context']) {

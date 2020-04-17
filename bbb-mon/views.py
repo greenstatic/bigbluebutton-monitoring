@@ -59,7 +59,7 @@ def get_meetings():
         m = {
             "name": meeting['meetingName'],
             "id": meeting['meetingID'],
-            "creation": meeting['createDate'],
+            "creation": meeting['createTime'],
             "noUsers": meeting['participantCount'],
             "moderators": moderators,
             "metadata": {
