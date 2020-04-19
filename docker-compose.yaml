@@ -10,7 +10,7 @@ services:
     #- "DEBUG=true"
     env_file:
     # Within this file (secrets.env) which needs to be located in the same directory
-    # as docker-compose.yml, you should have the following line
+    # as docker-compose.yaml, you should have the following line
     # API_SECRET=<TODO: YOUR API SECRET KEY>
     - secrets.env
 

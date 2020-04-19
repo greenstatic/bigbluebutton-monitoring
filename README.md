@@ -26,8 +26,8 @@ Make sure you have docker-compose installed.
    ```bash
    mkdir ~/bbb-monitor
    ``` 
-2. Create the file `~/bbb-monitor/docker-compose.yml` and copy the contents of `docker-compose.yml` from this repository.
-3. Edit `~/bbb-monitor/docker-compose.yml` and replace the required fields
+2. Create the file `~/bbb-monitor/docker-compose.yaml` and copy the contents of `docker-compose.yaml` from this repository.
+3. Edit `~/bbb-monitor/docker-compose.yaml` and replace the required fields
 4. Create the file `~/bbb-monitor/secrets.env` and place your API_SECRET in it. It should look something like this:
    ```
    API_SECRET=<TODO: YOUR API SECRET KEY>
