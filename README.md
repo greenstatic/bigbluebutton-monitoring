@@ -14,6 +14,10 @@ HTTP server will listen on port: 5000
 
 Docker Hub: [https://hub.docker.com/r/greenstatic/bigbluebutton-monitoring](https://hub.docker.com/r/greenstatic/bigbluebutton-monitoring)
 
+---
+
+See [BigBlueButton-exporter](https://github.com/greenstatic/bigbluebutton-exporter) to integrate BigBlueButton metrics into Prometheus and display them in Grafana.
+
 ## Demo Screenshot
 ![demo-screenshot](demo.png)
 
