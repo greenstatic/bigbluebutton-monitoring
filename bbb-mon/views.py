@@ -51,7 +51,7 @@ def get_meetings():
         origin_server = None
         try:
             origin_server = meeting['metadata']['bbb-origin-server-name']
-        except KeyError:
+        except (KeyError, TypeError):
             logging.debug("BBB origin server name does not exist for meeting")
             logging.debug("Setting BBB origin as the server itself")
             origin_server = urlparse(settings.API_BASE_URL).netloc
@@ -70,7 +70,7 @@ def get_meetings():
         # bbb-context is optional in bbb response
         try:
             m['metadata']['origin-context'] = _bbb_context_convert_moodle(meeting['metadata']['bbb-context'])
-        except KeyError:
+        except (KeyError, TypeError):
             pass
 
         response.append(m)
